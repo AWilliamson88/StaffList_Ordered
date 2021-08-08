@@ -82,16 +82,19 @@ namespace StaffPayroll
         // Method to display the list.
         private void Display()
         {
-            LBDisplay.Items.Clear();
-            Node r = staffPayroll.GetRoot();
+            if(staffPayroll.GetRoot() != null)
+            {
+                LBDisplay.Items.Clear();
+                Node r = staffPayroll.GetRoot();
 
-            string data = $"Root: {staffPayroll.DisplayRoot()}\tLeft: {staffPayroll.DisplayLeft()}\tRight: {staffPayroll.DisplayRight()}";
-            string left = staffPayroll.DisplayInOrder(r.GetLeft());
-            string right = staffPayroll.DisplayInOrder(r.GetRight());
+                string data = $"Root: {staffPayroll.DisplayRoot()}\tLeft: {staffPayroll.DisplayLeft()}\tRight: {staffPayroll.DisplayRight()}";
+                string left = staffPayroll.DisplayInOrder(r.GetLeft());
+                string right = staffPayroll.DisplayInOrder(r.GetRight());
 
-            LBDisplay.Items.Add(data);
-            LBDisplay.Items.Add("Left: " + left);
-            LBDisplay.Items.Add("Right:" + right);
+                LBDisplay.Items.Add(data);
+                LBDisplay.Items.Add("Left: " + left);
+                LBDisplay.Items.Add("Right:" + right);
+            }
 
         }
         // Clear the text box and put the focus back onto it.
@@ -103,17 +106,25 @@ namespace StaffPayroll
 
         private void BtnFind_Click(object sender, EventArgs e)
         {
-            staffPayroll.Find(TBName.Text);
+            if (TBName.Text != "")
+            {
+                staffPayroll.Find(TBName.Text);
 
-            ClearAndFocus();
+                ClearAndFocus();
+            }
+            
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)
         {
-            staffPayroll.Delete(TBName.Text);
+            if (TBName.Text != "")
+            {
+                staffPayroll.Delete(TBName.Text);
 
-            Display();
-            ClearAndFocus();
+                Display();
+                ClearAndFocus();
+            }
+            
         }
     }
 }

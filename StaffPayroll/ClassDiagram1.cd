@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="StaffPayroll.Node">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABEAAAAIAAiAAIAAAAAAAIAAAAAAAQAAAAgAA=</HashCode>
+      <FileName>Node.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StaffPayroll.StaffPayrollForm">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <Members>
+      <Field Name="BtnAdd" Hidden="true" />
+      <Field Name="BtnAutoFill" Hidden="true" />
+      <Field Name="BtnFind" Hidden="true" />
+      <Field Name="BtnRemove" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="LBDisplay" Hidden="true" />
+      <Field Name="TBName" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACACjAAAAACAQQADJAAAAAAgAAEAAgAAIBA=</HashCode>
+      <FileName>StaffPayrollForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StaffPayroll.Tree">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIIASAAAEBAAAEAIAAAghABEAgEIAAAQAQRAAAAAAAA=</HashCode>
+      <FileName>Tree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -34,11 +34,7 @@ namespace StaffPayroll
             this.BtnFind = new System.Windows.Forms.Button();
             this.BtnRemove = new System.Windows.Forms.Button();
             this.BtnAutoFill = new System.Windows.Forms.Button();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.SSMessage = new System.Windows.Forms.ToolStripStatusLabel();
-            this.SSData = new System.Windows.Forms.ToolStripStatusLabel();
             this.LBDisplay = new System.Windows.Forms.ListBox();
-            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TBName
@@ -88,32 +84,6 @@ namespace StaffPayroll
             this.BtnAutoFill.UseVisualStyleBackColor = true;
             this.BtnAutoFill.Click += new System.EventHandler(this.BtnAutoFill_Click);
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SSMessage,
-            this.SSData});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 253);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(665, 22);
-            this.statusStrip1.TabIndex = 6;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // SSMessage
-            // 
-            this.SSMessage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.SSMessage.Name = "SSMessage";
-            this.SSMessage.Size = new System.Drawing.Size(60, 17);
-            this.SSMessage.Text = "Welcome.";
-            // 
-            // SSData
-            // 
-            this.SSData.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.SSData.Name = "SSData";
-            this.SSData.Size = new System.Drawing.Size(10, 17);
-            this.SSData.Text = " ";
-            this.SSData.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // LBDisplay
             // 
             this.LBDisplay.Location = new System.Drawing.Point(12, 171);
@@ -125,9 +95,8 @@ namespace StaffPayroll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 275);
+            this.ClientSize = new System.Drawing.Size(665, 258);
             this.Controls.Add(this.LBDisplay);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.BtnAutoFill);
             this.Controls.Add(this.BtnRemove);
             this.Controls.Add(this.BtnFind);
@@ -135,8 +104,6 @@ namespace StaffPayroll
             this.Controls.Add(this.TBName);
             this.Name = "StaffPayrollForm";
             this.Text = "Staff List";
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,9 +116,6 @@ namespace StaffPayroll
         private System.Windows.Forms.Button BtnFind;
         private System.Windows.Forms.Button BtnRemove;
         private System.Windows.Forms.Button BtnAutoFill;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel SSMessage;
-        private System.Windows.Forms.ToolStripStatusLabel SSData;
         private System.Windows.Forms.ListBox LBDisplay;
     }
 }
