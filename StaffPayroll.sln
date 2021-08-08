@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaffOrderedByName", "StaffList_Ordered\StaffOrderedByName.csproj", "{172DFC97-1E78-4C07-9BE7-DDE2D623EA32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaffPayroll", "StaffPayroll\StaffPayroll.csproj", "{172DFC97-1E78-4C07-9BE7-DDE2D623EA32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaffPayrollTest", "StaffPayrollTest\StaffPayrollTest.csproj", "{80CD33DE-0AEF-4B15-A249-B68A88E3A078}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{172DFC97-1E78-4C07-9BE7-DDE2D623EA32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{172DFC97-1E78-4C07-9BE7-DDE2D623EA32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{172DFC97-1E78-4C07-9BE7-DDE2D623EA32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80CD33DE-0AEF-4B15-A249-B68A88E3A078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80CD33DE-0AEF-4B15-A249-B68A88E3A078}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80CD33DE-0AEF-4B15-A249-B68A88E3A078}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80CD33DE-0AEF-4B15-A249-B68A88E3A078}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

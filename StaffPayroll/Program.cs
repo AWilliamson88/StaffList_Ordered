@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace StaffList_Ordered
+namespace StaffPayroll
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace StaffList_Ordered
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StaffOrderedByNameForm());
+            Application.Run(new StaffPayrollForm());
         }
     }
 }
