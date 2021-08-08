@@ -11,10 +11,7 @@ namespace StaffPayroll
     public class Tree
     {
 
-        private static Node root;
-
-        private static string heightOfLeft;
-        private static string heightOfRight;
+        private Node root;
 
         public Tree()
         {
@@ -74,10 +71,10 @@ namespace StaffPayroll
         // Methods to balance tree after insert and delete
         private Node Balance_Tree(Node current)
         {
-            int BFactor = Balance_Factor(current);
+            int BFactor = BalanceFactor(current);
             if (BFactor > 1)
             {
-                if (Balance_Factor(current.GetLeft()) > 0)
+                if (BalanceFactor(current.GetLeft()) > 0)
                 {
                     current = RotateLL(current);
                 }
@@ -88,7 +85,7 @@ namespace StaffPayroll
             }
             else if (BFactor < -1)
             {
-                if (Balance_Factor(current.GetRight()) > 0)
+                if (BalanceFactor(current.GetRight()) > 0)
                 {
                     current = RotateRL(current);
                 }
@@ -99,7 +96,7 @@ namespace StaffPayroll
             }
             return current;
         }
-        private int Balance_Factor(Node current)
+        private int BalanceFactor(Node current)
         {
             int l = GetHeight(current.GetLeft());
             int r = GetHeight(current.GetRight());
@@ -209,46 +206,54 @@ namespace StaffPayroll
         // informs the user if the string was found in the list.
         public void Find(string nameToFind)
         {
-            if (FindRecursive(nameToFind, root).GetData() == nameToFind)
+
+            if (FindRecursive(nameToFind, root).GetData() != null)
             {
-                MessageBox.Show(nameToFind + " was found in the list.", "Search Successfull",
-                    MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
-            else
-            {
-                MessageBox.Show(nameToFind + " was not found in the list.", "Search Unsuccessfull",
-                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+
+                if (nameToFind.Equals(FindRecursive(nameToFind, root).GetData(), StringComparison.InvariantCultureIgnoreCase))
+                {
+                    MessageBox.Show(nameToFind + " was found in the list.", "Search Successfull",
+                        MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+                else
+                {
+                    MessageBox.Show(nameToFind + " was not found in the list.", "Search Unsuccessfull",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }   
+
         }
         // Searches the tree for the accepted string starting with the accepted node.
         // Returns a node.
         private Node FindRecursive(string target, Node current)
         {
+            string lowerT = target.ToLower();
+            string lowerC = current.GetData().ToLower();
+
             if (current == null)
             {
                 return current;
             }
 
-            if (string.Compare(target, current.GetData()) < 0)
+            if (string.Compare(lowerT, lowerC) < 0)
             {
-                if (target == current.GetData())
+                if (lowerT == lowerC)
                 {
                     return current;
                 }
                 else
-                    return FindRecursive(target, current.GetLeft());
+                    return FindRecursive(lowerT, current.GetLeft());
             }
             else
             {
-                if (target == current.GetData())
+                if (lowerT == lowerC)
                 {
                     return current;
                 }
                 else
                 {
-                    return FindRecursive(target, current.GetRight());
+                    return FindRecursive(lowerT, current.GetRight());
                 }
-
             }
         }
         #endregion
@@ -256,18 +261,23 @@ namespace StaffPayroll
         // Delete Methods.
         #region Delete
         public void Delete(string target)
-        {//and here
-            if(GetRoot() != null)
+        {
+            if (GetRoot() != null)
             {
                 SetRoot(DeleteNode(root, target));
             }
-            
+
         }
         private Node DeleteNode(Node current, string target)
         {
             Node parent;
+
             if (current == null)
-            { return null; }
+            {
+                MessageBox.Show(target + " was not found in the list.", "Delete Unsuccessfull",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return null;
+            }
             else
             {
                 //left subtree
@@ -275,9 +285,9 @@ namespace StaffPayroll
                 {
                     current.SetLeft(DeleteNode(current.GetLeft(), target));
 
-                    if (Balance_Factor(current) == -2)  //
+                    if (BalanceFactor(current) == -2)  //
                     {
-                        if (Balance_Factor(current.GetRight()) <= 0)
+                        if (BalanceFactor(current.GetRight()) <= 0)
                         {
                             current = RotateRR(current);
                         }
@@ -286,14 +296,16 @@ namespace StaffPayroll
                             current = RotateRL(current);
                         }
                     }
+                    
                 }
                 //right subtree
                 else if (string.Compare(target, current.GetData()) > 0)
                 {
                     current.SetRight(DeleteNode(current.GetRight(), target));
-                    if (Balance_Factor(current) == 2)
+
+                    if (BalanceFactor(current) == 2)
                     {
-                        if (Balance_Factor(current.GetLeft()) >= 0)
+                        if (BalanceFactor(current.GetLeft()) >= 0)
                         {
                             current = RotateLL(current);
                         }
@@ -303,22 +315,24 @@ namespace StaffPayroll
                         }
                     }
                 }
-                //if target is found
+                // if target is found
                 else
                 {
                     if (current.GetRight() != null)
                     {
-                        //delete its inorder successor
+                        // delete its inorder successor
                         parent = current.GetRight();
                         while (parent.GetLeft() != null)
                         {
                             parent = parent.GetLeft();
                         }
+
                         current.SetData(parent.GetData());
                         current.SetRight(DeleteNode(current.GetRight(), parent.GetData()));
-                        if (Balance_Factor(current) == 2)//rebalancing
+
+                        if (BalanceFactor(current) == 2)// rebalancing
                         {
-                            if (Balance_Factor(current.GetLeft()) >= 0)
+                            if (BalanceFactor(current.GetLeft()) >= 0)
                             {
                                 current = RotateLL(current);
                             }
@@ -326,9 +340,13 @@ namespace StaffPayroll
                         }
                     }
                     else
-                    {   //if current.left != null
+                    {   // if current.left != null
                         return current.GetLeft();
                     }
+
+                    MessageBox.Show(target + " was deleted from the list.", "Delete Successfull",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
                 }
             }
             return current;

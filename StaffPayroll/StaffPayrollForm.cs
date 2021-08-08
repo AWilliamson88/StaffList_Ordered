@@ -56,23 +56,33 @@ namespace StaffPayroll
             staffPayroll.Add("Ethan");
             staffPayroll.Add("Stacey");
             staffPayroll.Add("Becky");
+
+            Display();
         }
 
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
+            if (TBName.Text != "")
+            {
+                staffPayroll.Add(TBName.Text);
 
-            staffPayroll.Add(TBName.Text);
+                Display();
+                ClearAndFocus();
 
-            Display();
-
-            TBName.Text = "";
-
+            } else
+            {
+                MessageBox.Show("Please enter a name to search.", "Unable to Search",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
 
+
+        // Method to display the list.
         private void Display()
         {
+            LBDisplay.Items.Clear();
             Node r = staffPayroll.GetRoot();
 
             string data = $"Root: {staffPayroll.DisplayRoot()}\tLeft: {staffPayroll.DisplayLeft()}\tRight: {staffPayroll.DisplayRight()}";
@@ -84,15 +94,26 @@ namespace StaffPayroll
             LBDisplay.Items.Add("Right:" + right);
 
         }
+        // Clear the text box and put the focus back onto it.
+        private void ClearAndFocus()
+        {
+            TBName.Clear();
+            TBName.Focus();
+        }
 
         private void BtnFind_Click(object sender, EventArgs e)
         {
             staffPayroll.Find(TBName.Text);
+
+            ClearAndFocus();
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)
         {
             staffPayroll.Delete(TBName.Text);
+
+            Display();
+            ClearAndFocus();
         }
     }
 }
