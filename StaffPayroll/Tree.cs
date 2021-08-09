@@ -204,17 +204,24 @@ namespace StaffPayroll
         #region Search
         // Accepts a string and calls the FindRecursive method and
         // informs the user if the string was found in the list.
-        public void Find(string nameToFind)
+        public bool Find(string nameToFind)
         {
-
             if (FindRecursive(nameToFind, root) != null)
             {
                 if (nameToFind.Equals(FindRecursive(nameToFind, root).GetData(), StringComparison.InvariantCultureIgnoreCase))
                 {
-                    MessageBox.Show(nameToFind + " was found in the list.", "Search Successfull",
-                        MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    return true;
                 }
-            }   
+
+            }
+            return false;
+            //
+            //    if (nameToFind.Equals(FindRecursive(nameToFind, root).GetData(), StringComparison.InvariantCultureIgnoreCase))
+            //    {
+            //        MessageBox.Show(nameToFind + " was found in the list.", "Search Successfull",
+            //            MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            //    }
+            //}
 
         }
         // Searches the tree for the accepted string starting with the accepted node.
@@ -223,8 +230,6 @@ namespace StaffPayroll
         {
             if (current == null)
             {
-                MessageBox.Show(target + " was not found in the list.", "Search Unsuccessfull",
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return current;
             }
 
@@ -260,7 +265,17 @@ namespace StaffPayroll
         {
             if (GetRoot() != null)
             {
-                SetRoot(DeleteNode(root, target));
+                if (Find(target))
+                {
+                    SetRoot(DeleteNode(root, target));
+                    MessageBox.Show(target + " was deleted from the list.", "Delete Successfull",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    MessageBox.Show("That name was not found in the list.", "Delete Unsuccessfull",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
 
         }
@@ -270,16 +285,17 @@ namespace StaffPayroll
 
             if (current == null)
             {
-                MessageBox.Show("That name was not found in the list.", "Delete Unsuccessfull",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return null;
             }
             else
             {
+                string lowerT = target.ToLower();
+                string lowerC = current.GetData().ToLower();
+
                 //left subtree
-                if (string.Compare(target, current.GetData()) < 0)
+                if (string.Compare(lowerT, lowerC) < 0)
                 {
-                    current.SetLeft(DeleteNode(current.GetLeft(), target));
+                    current.SetLeft(DeleteNode(current.GetLeft(), lowerT));
 
                     if (BalanceFactor(current) == -2)  //
                     {
@@ -292,12 +308,12 @@ namespace StaffPayroll
                             current = RotateRL(current);
                         }
                     }
-                    
+
                 }
                 //right subtree
-                else if (string.Compare(target, current.GetData()) > 0)
+                else if (string.Compare(lowerT, lowerC) > 0)
                 {
-                    current.SetRight(DeleteNode(current.GetRight(), target));
+                    current.SetRight(DeleteNode(current.GetRight(), lowerT));
 
                     if (BalanceFactor(current) == 2)
                     {
@@ -314,11 +330,9 @@ namespace StaffPayroll
                 // if target is found
                 else
                 {
-                    MessageBox.Show(target + " was deleted from the list.", "Delete Successfull",
-                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
                     if (current.GetRight() != null)
                     {
+
                         // delete its inorder successor
                         parent = current.GetRight();
                         while (parent.GetLeft() != null)
@@ -340,9 +354,9 @@ namespace StaffPayroll
                     }
                     else
                     {   // if current.left != null
+
                         return current.GetLeft();
                     }
-
                 }
             }
             return current;

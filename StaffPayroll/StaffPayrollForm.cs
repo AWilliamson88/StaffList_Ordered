@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 // Program Author: Andrew Williamson / P113357
-// Code From:
+// Code From: ALV tree code from Blackboard, SMTAFE
+//      Modifications made to Blackboard AVL tree code by Andrew Williamson.
 // Date: 02/08/2021
 // Programming 3 AT2 Q2
 // Question 2 – 
@@ -17,9 +18,6 @@ using System.Windows.Forms;
 // You need to create a balanced binary search tree for a dictionary 
 // of no less than 10 words. 
 // You must be able to search the list, add and remove from the list.
-
-
-// Fill out the Code From Section above.
 
 namespace StaffPayroll
 {
@@ -78,7 +76,6 @@ namespace StaffPayroll
 
         }
 
-
         // Method to display the list.
         private void Display()
         {
@@ -104,15 +101,25 @@ namespace StaffPayroll
             TBName.Focus();
         }
 
+
         private void BtnFind_Click(object sender, EventArgs e)
         {
             if (TBName.Text != "")
             {
-                staffPayroll.Find(TBName.Text);
+                bool result = staffPayroll.Find(TBName.Text);
+                if (result)
+                {
+                    MessageBox.Show(TBName.Text + " was found in the list.", "Search Successfull",
+                    MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                } else
+                {
+                    MessageBox.Show(TBName.Text + " was not found in the list.", "Search Unsuccessfull",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
 
                 ClearAndFocus();
             }
-            
+
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)

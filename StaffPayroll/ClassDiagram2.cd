@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="StaffPayroll.Node">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABEAAAAIAAiAAIAAAAAAAIAAAAAAAQAAAAgAA=</HashCode>
+      <FileName>Node.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StaffPayroll.StaffPayrollForm">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <Members>
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACACjAAAAACAQQADJAAAAAAgAAEAAgAAIBA=</HashCode>
+      <FileName>StaffPayrollForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StaffPayroll.Tree">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIIASAAAEBAAAEAIAAAghABEAgEIAAAQAQRAAAAAAAA=</HashCode>
+      <FileName>Tree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

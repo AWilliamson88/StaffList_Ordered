@@ -86,10 +86,14 @@ namespace StaffPayroll
             // 
             // LBDisplay
             // 
+            this.LBDisplay.Enabled = false;
+            this.LBDisplay.HorizontalScrollbar = true;
             this.LBDisplay.Location = new System.Drawing.Point(12, 171);
             this.LBDisplay.Name = "LBDisplay";
+            this.LBDisplay.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.LBDisplay.Size = new System.Drawing.Size(432, 69);
             this.LBDisplay.TabIndex = 0;
+            this.LBDisplay.TabStop = false;
             // 
             // StaffPayrollForm
             // 
